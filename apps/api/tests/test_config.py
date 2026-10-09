@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 
-from veridion.config import Settings
+from veridion.config import Settings, _repo_root
 
 
 @pytest.mark.parametrize("url", [
@@ -14,6 +16,11 @@ from veridion.config import Settings
 ])
 def test_platform_postgres_urls_use_psycopg(url):
     assert Settings(database_url=url).database_url == "postgresql+psycopg://user:pw@db.internal:5432/veridion"
+
+
+def test_repo_root_in_a_checkout_and_in_the_container_image():
+    assert _repo_root(Path("/work/veridion/apps/api")) == Path("/work/veridion")
+    assert _repo_root(Path("/app")) == Path("/app")
 
 
 def test_relative_sqlite_paths_are_anchored_to_the_api_directory():

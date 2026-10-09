@@ -9,8 +9,14 @@ from typing import Literal
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-API_ROOT = Path(__file__).resolve().parents[2]  # apps/api
-REPO_ROOT = API_ROOT.parents[1]
+
+def _repo_root(api_root: Path) -> Path:
+    """The repository root in a checkout (<repo>/apps/api); the API directory itself elsewhere (e.g. /app in the image)."""
+    return api_root.parents[1] if api_root.parent.name == "apps" else api_root
+
+
+API_ROOT = Path(__file__).resolve().parents[2]  # apps/api in a checkout, /app in the container image
+REPO_ROOT = _repo_root(API_ROOT)
 
 # Later files override earlier ones: repo-level .env first, then apps/api/.env.
 _ENV_FILES = (REPO_ROOT / ".env", API_ROOT / ".env")
