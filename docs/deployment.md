@@ -71,8 +71,8 @@ It then creates `veridion-db` and `veridion-api`. The API applies migrations whe
 
 | Variable | Value |
 |---|---|
-| `VERIDION_API_URL` | The Render URL, for example `https://veridion-api.onrender.com` |
-| `NEXT_PUBLIC_SITE_URL` | The Vercel URL, for example `https://your-project.vercel.app` |
+| `VERIDION_API_URL` | The API service's Render URL, `https://<service>.onrender.com` |
+| `NEXT_PUBLIC_SITE_URL` | Optional: a custom domain. Without it the Vercel production domain (here `https://veridion-nine.vercel.app`) is used. |
 
 Rewrites are compiled at build time, so redeploy the web app after changing `VERIDION_API_URL`. From the command line: `cd apps/web && vercel link`, add the two variables with `vercel env add`, then `vercel deploy --prod`.
 
