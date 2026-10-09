@@ -12,6 +12,7 @@ and backs every conclusion with the exact passage it came from.
 [Website](https://veridion-nine.vercel.app) · [Interactive demo](https://veridion-nine.vercel.app/demo) · [Methodology](https://veridion-nine.vercel.app/methodology) · [Security](https://veridion-nine.vercel.app/trust/security) · [Architecture](docs/architecture.md)
 
 [![CI](https://github.com/ChethanKMurthy/veridion/actions/workflows/ci.yml/badge.svg)](https://github.com/ChethanKMurthy/veridion/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/ChethanKMurthy/veridion?color=1B1E20&label=release)](https://github.com/ChethanKMurthy/veridion/releases)
 ![Python 3.12](https://img.shields.io/badge/python-3.12-1B1E20)
 ![Next.js 16](https://img.shields.io/badge/next.js-16-1B1E20)
 ![PostgreSQL 17](https://img.shields.io/badge/postgresql-17-1B1E20)
@@ -219,6 +220,22 @@ Inference cost grows linearly with catalogue size, to roughly US$0.08 for a 100-
 
 The full stack also runs on one machine with Docker Compose: PostgreSQL, a one-shot migration, the API, a worker and the web app. Configuration, scaling, releases, monitoring, backups and a production checklist are in [docs/deployment.md](docs/deployment.md).
 
+### Container images
+
+Every release publishes images to [GitHub Container Registry](https://github.com/ChethanKMurthy?tab=packages&repo_name=veridion) for `linux/amd64` and `linux/arm64`, with SBOM and build-provenance attestations.
+
+| Image | Contents |
+|---|---|
+| `ghcr.io/chethankmurthy/veridion-api` | API, worker and migrations: `veridion serve`, `veridion worker`, `veridion db upgrade` |
+| `ghcr.io/chethankmurthy/veridion-web` | Web application; proxies `/api/*` to `http://api:8000` |
+
+```bash
+# The full stack on published images, no local build
+VERIDION_API_IMAGE=ghcr.io/chethankmurthy/veridion-api:0.1.0 \
+VERIDION_WEB_IMAGE=ghcr.io/chethankmurthy/veridion-web:0.1.0 \
+docker compose up --no-build --detach
+```
+
 ## Getting started
 
 Prerequisites: Python 3.12 with [uv](https://docs.astral.sh/uv/), Node.js 22 or later, and optionally Tesseract for scanned PDFs.
@@ -275,6 +292,7 @@ docker-compose.yml · render.yaml · Makefile · .github/workflows/ci.yml
 - **Continuous integration on every push.** The API job runs Ruff and the 67-test suite (with Tesseract), then applies and drift-checks migrations on PostgreSQL 17 and runs the platform end to end against it. The web job runs ESLint, strict TypeScript and a production build. A final job builds both container images and smoke-tests the full stack through the web origin.
 - **Tests cover the contracts that matter:** tenant isolation, roles, CSRF and bearer authentication, rate limits, plan limits, the full upload-to-report workflow, exports, the model merge policy, extraction edge cases, OCR and file recovery.
 - **Schema changes ship as reviewed migrations,** and CI fails if models and migrations drift apart.
+- **Releases are cut from version tags.** The release workflow publishes multi-architecture images with SBOM and provenance attestations, and a GitHub Release carrying the changelog and the OpenAPI specification.
 - **Invariants live in code, not convention:** immutable catalogue versions, deterministic evidence IDs, validated model output, and no silent model overrides.
 
 ## Business model
@@ -305,6 +323,7 @@ Current coverage: GRI energy and emissions disclosures (GRI 302 and 305 reviewed
 | [Evaluation](docs/evaluation.md) | Benchmark results, rules vs rules + model, failure analysis |
 | [Strategy](docs/business-plan.md) | Customer, positioning, pricing hypotheses, unit economics, risks |
 | [Product principles](PRODUCT.md) · [Design system](DESIGN.md) | Product principles, tone and the visual system |
+| [Changelog](CHANGELOG.md) | What changed in each release |
 | [Security policy](SECURITY.md) | Vulnerability reporting and controls |
 
 ## Contact

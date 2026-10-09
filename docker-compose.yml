@@ -12,7 +12,8 @@ name: veridion
 
 x-api-image: &api-image
   build: ./apps/api
-  image: veridion-api:local
+  # Set VERIDION_API_IMAGE / VERIDION_WEB_IMAGE to run published images (docker compose up --no-build).
+  image: ${VERIDION_API_IMAGE:-veridion-api:local}
 
 x-api-environment: &api-environment
   VERIDION_ENV: production
@@ -102,7 +103,7 @@ services:
       args:
         VERIDION_API_URL: http://api:8000
         NEXT_PUBLIC_SITE_URL: ${SITE_URL:-http://localhost:3000}
-    image: veridion-web:local
+    image: ${VERIDION_WEB_IMAGE:-veridion-web:local}
     ports:
       - "${WEB_PORT:-3000}:3000"
     depends_on:

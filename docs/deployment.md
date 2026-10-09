@@ -122,7 +122,26 @@ In *rules + model* mode, excerpts of the customer's documents (up to 12 passages
 
 ## Releases
 
-1. Build both images, tagged with the commit SHA. CI (`.github/workflows/ci.yml`) already builds and smoke-tests them.
+Versions follow semantic versioning and are recorded in `CHANGELOG.md`. To cut a release, add a section for the new version to the changelog, then push a tag:
+
+```bash
+git tag -a v0.2.0 -m "Veridion 0.2.0"
+git push origin v0.2.0
+```
+
+The release workflow (`.github/workflows/release.yml`) builds both images for `linux/amd64` and `linux/arm64`, publishes them to GitHub Container Registry as `ghcr.io/<owner>/veridion-api` and `ghcr.io/<owner>/veridion-web` (tags `0.2.0`, `0.2`, `latest` and `sha-<commit>`) with SBOM and provenance attestations, and creates a GitHub Release with the changelog section and the OpenAPI specification attached. The published web image proxies `/api/*` to `http://api:8000`, which matches the Compose stack; other topologies build the web image with their own `VERIDION_API_URL`.
+
+To run the Compose stack on published images instead of local builds:
+
+```bash
+VERIDION_API_IMAGE=ghcr.io/<owner>/veridion-api:0.2.0 \
+VERIDION_WEB_IMAGE=ghcr.io/<owner>/veridion-web:0.2.0 \
+docker compose up --no-build --detach
+```
+
+Rolling out a release:
+
+1. Use the release's images (or build both from the tagged commit). CI (`.github/workflows/ci.yml`) has already built and smoke-tested them.
 2. Run `veridion db upgrade` with the new API image against the production database. Write migrations so they can be applied while the previous release is still running: add columns and tables first, and remove old ones in a later release.
 3. Roll the workers, then the API, then the web tier. Workers finish their current job on `SIGTERM` (give them a two-minute grace period).
 

@@ -1,0 +1,130 @@
+name: Release
+
+# Cut a release by pushing a version tag:
+#   git tag -a v0.2.0 -m "Veridion 0.2.0" && git push origin v0.2.0
+#
+# Publishes multi-architecture container images to GitHub Container Registry (with SBOM and
+# build provenance attestations) and creates a GitHub Release with notes from CHANGELOG.md and
+# the OpenAPI specification attached.
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  images:
+    name: Image · ${{ matrix.image }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: veridion-api
+            context: apps/api
+            description: Veridion API, worker and migrations (FastAPI, PyMuPDF, Tesseract).
+            build-args: ""
+          - image: veridion-web
+            context: apps/web
+            description: Veridion web application (Next.js standalone server). Proxies /api/* to http://api:8000.
+            build-args: |
+              VERIDION_API_URL=http://api:8000
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Registry path (lower case)
+        run: echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/${{ matrix.image }}" >> "$GITHUB_ENV"
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: meta
+        uses: docker/metadata-action@v5
+        env:
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,format=short
+          labels: |
+            org.opencontainers.image.title=${{ matrix.image }}
+            org.opencontainers.image.description=${{ matrix.description }}
+            org.opencontainers.image.vendor=Veridion
+            org.opencontainers.image.licenses=LicenseRef-Proprietary
+          annotations: |
+            org.opencontainers.image.title=${{ matrix.image }}
+            org.opencontainers.image.description=${{ matrix.description }}
+            org.opencontainers.image.licenses=LicenseRef-Proprietary
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.context }}
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          annotations: ${{ steps.meta.outputs.annotations }}
+          build-args: ${{ matrix.build-args }}
+          cache-from: type=gha,scope=release-${{ matrix.image }}
+          cache-to: type=gha,mode=max,scope=release-${{ matrix.image }}
+          provenance: mode=max
+          sbom: true
+
+  release:
+    name: GitHub release
+    needs: images
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-dependency-glob: apps/api/uv.lock
+
+      - name: Export the OpenAPI specification
+        working-directory: apps/api
+        env:
+          LLM_PROVIDER: none
+        run: |
+          uv sync --locked
+          uv run python -c "import json; from veridion.main import create_app; print(json.dumps(create_app().openapi(), indent=2))" > ../../openapi.json
+
+      - name: Release notes
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          owner="${GITHUB_REPOSITORY_OWNER,,}"
+          awk -v v="$version" '$0 ~ "^## " v "( |$)" {found=1; next} /^## / {if (found) exit} found' CHANGELOG.md > notes.md
+          if [ ! -s notes.md ]; then echo "CHANGELOG.md has no section for $version" >&2; exit 1; fi
+          {
+            echo
+            echo "### Container images"
+            echo
+            echo '```bash'
+            echo "docker pull ghcr.io/${owner}/veridion-api:${version}"
+            echo "docker pull ghcr.io/${owner}/veridion-web:${version}"
+            echo '```'
+            echo
+            echo "Images are built for linux/amd64 and linux/arm64 and carry SBOM and provenance attestations. \`openapi.json\` is the API specification for this version."
+          } >> notes.md
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" openapi.json --title "Veridion $GITHUB_REF_NAME" --notes-file notes.md --verify-tag
