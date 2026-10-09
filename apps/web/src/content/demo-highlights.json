@@ -1,0 +1,1113 @@
+{
+ "key_disclosures": [
+  {
+   "metric_key": "energy_electricity",
+   "label": "Electricity consumption",
+   "current": {
+    "id": "met_01m4gcq8favss1yc2jtv4cs05k",
+    "metric_key": "energy_electricity",
+    "label": "Electricity consumption",
+    "value": 118900.0,
+    "unit": "MWh",
+    "normalized_value": 118900.0,
+    "normalized_unit": "MWh",
+    "period_label": "FY2025",
+    "period_end": "2025-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_8a83c082837f5a593f30",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 6,
+    "source": "Sustainability report FY2025, p.6"
+   },
+   "prior": {
+    "id": "met_01m4gcq8fazpr39xjc6qnzzvkg",
+    "metric_key": "energy_electricity",
+    "label": "Electricity consumption",
+    "value": 123200.0,
+    "unit": "MWh",
+    "normalized_value": 123200.0,
+    "normalized_unit": "MWh",
+    "period_label": "FY2024",
+    "period_end": "2024-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_8a83c082837f5a593f30",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 6,
+    "source": "Sustainability report FY2025, p.6"
+   },
+   "change": -0.0349,
+   "sources": 2
+  },
+  {
+   "metric_key": "energy_intensity",
+   "label": "Energy intensity",
+   "current": {
+    "id": "met_01m4gcq8fa0gsd3zfkw3smt5rh",
+    "metric_key": "energy_intensity",
+    "label": "Energy intensity",
+    "value": 1.01,
+    "unit": "MWh/tonne of product",
+    "normalized_value": 1.01,
+    "normalized_unit": "MWh/tonne of product",
+    "period_label": "FY2025",
+    "period_end": "2025-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_b4c7d062625b042fe6fd",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 6,
+    "source": "Sustainability report FY2025, p.6"
+   },
+   "prior": {
+    "id": "met_01m4gcq8fargh8pqnss8kv3z03",
+    "metric_key": "energy_intensity",
+    "label": "Energy intensity",
+    "value": 1.04,
+    "unit": "MWh/tonne of product",
+    "normalized_value": 1.04,
+    "normalized_unit": "MWh/tonne of product",
+    "period_label": "FY2024",
+    "period_end": "2024-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_b4c7d062625b042fe6fd",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 6,
+    "source": "Sustainability report FY2025, p.6"
+   },
+   "change": -0.0288,
+   "sources": 3
+  },
+  {
+   "metric_key": "energy_reduction",
+   "label": "Reduction in energy consumption",
+   "current": {
+    "id": "met_01m4gcq8fah7nt6y0e0f1ycnjx",
+    "metric_key": "energy_reduction",
+    "label": "Reduction in energy consumption",
+    "value": 6800.0,
+    "unit": "MWh",
+    "normalized_value": 6800.0,
+    "normalized_unit": "MWh",
+    "period_label": "FY2025",
+    "period_end": "2025-12-31",
+    "qualifiers": {},
+    "confidence": 0.85,
+    "method": "text",
+    "passage_id": "ev_f38d48c444a257dbd8bd",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 7,
+    "source": "Sustainability report FY2025, p.7"
+   },
+   "prior": null,
+   "change": null,
+   "sources": 1
+  },
+  {
+   "metric_key": "energy_renewable_share",
+   "label": "Share of renewable energy",
+   "current": {
+    "id": "met_01m4gcq8fa589zxf1k33rtp53k",
+    "metric_key": "energy_renewable_share",
+    "label": "Share of renewable energy",
+    "value": 22.0,
+    "unit": "%",
+    "normalized_value": 22.0,
+    "normalized_unit": "%",
+    "period_label": "FY2025",
+    "period_end": "2025-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_8ce67b14ace85acc2fc0",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 6,
+    "source": "Sustainability report FY2025, p.6"
+   },
+   "prior": {
+    "id": "met_01m4gcq8faaj07h1zaca3w79yd",
+    "metric_key": "energy_renewable_share",
+    "label": "Share of renewable energy",
+    "value": 15.0,
+    "unit": "%",
+    "normalized_value": 15.0,
+    "normalized_unit": "%",
+    "period_label": "FY2024",
+    "period_end": "2024-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_8ce67b14ace85acc2fc0",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 6,
+    "source": "Sustainability report FY2025, p.6"
+   },
+   "change": 0.4667,
+   "sources": 2
+  },
+  {
+   "metric_key": "energy_total",
+   "label": "Total energy consumption",
+   "current": {
+    "id": "met_01m4gcq8fa47nnmetx6m0r2w9v",
+    "metric_key": "energy_total",
+    "label": "Total energy consumption",
+    "value": 412300.0,
+    "unit": "MWh",
+    "normalized_value": 412300.0,
+    "normalized_unit": "MWh",
+    "period_label": "FY2025",
+    "period_end": "2025-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_43ee3ac9fd3662700e82",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 6,
+    "source": "Sustainability report FY2025, p.6"
+   },
+   "prior": {
+    "id": "met_01m4gcq8fakhywxf20rja7d7st",
+    "metric_key": "energy_total",
+    "label": "Total energy consumption",
+    "value": 431800.0,
+    "unit": "MWh",
+    "normalized_value": 431800.0,
+    "normalized_unit": "MWh",
+    "period_label": "FY2024",
+    "period_end": "2024-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_43ee3ac9fd3662700e82",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 6,
+    "source": "Sustainability report FY2025, p.6"
+   },
+   "change": -0.0452,
+   "sources": 6
+  },
+  {
+   "metric_key": "ghg_intensity",
+   "label": "GHG emissions intensity",
+   "current": {
+    "id": "met_01m4gcq8fat3n2y95pcgk346wc",
+    "metric_key": "ghg_intensity",
+    "label": "GHG emissions intensity",
+    "value": 0.172,
+    "unit": "tCO2e/tonne of product",
+    "normalized_value": 0.172,
+    "normalized_unit": "tCO2e/tonne of product",
+    "period_label": "FY2025",
+    "period_end": "2025-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_469e826cc3a8f7eaeae0",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 4,
+    "source": "Sustainability report FY2025, p.4"
+   },
+   "prior": {
+    "id": "met_01m4gcq8favwf7h2s71y78j8sa",
+    "metric_key": "ghg_intensity",
+    "label": "GHG emissions intensity",
+    "value": 0.176,
+    "unit": "tCO2e/tonne of product",
+    "normalized_value": 0.176,
+    "normalized_unit": "tCO2e/tonne of product",
+    "period_label": "FY2024",
+    "period_end": "2024-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_469e826cc3a8f7eaeae0",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 4,
+    "source": "Sustainability report FY2025, p.4"
+   },
+   "change": -0.0227,
+   "sources": 3
+  },
+  {
+   "metric_key": "ghg_reduction",
+   "label": "GHG emissions reduced through initiatives",
+   "current": {
+    "id": "met_01m4gcq8favt2kq3aryq0j3cdj",
+    "metric_key": "ghg_reduction",
+    "label": "GHG emissions reduced through initiatives",
+    "value": 2350.0,
+    "unit": "tCO2e",
+    "normalized_value": 2350.0,
+    "normalized_unit": "tCO2e",
+    "period_label": "FY2025",
+    "period_end": "2025-12-31",
+    "qualifiers": {},
+    "confidence": 0.85,
+    "method": "text",
+    "passage_id": "ev_85840771acb64d9d2f1f",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 7,
+    "source": "Sustainability report FY2025, p.7"
+   },
+   "prior": null,
+   "change": null,
+   "sources": 1
+  },
+  {
+   "metric_key": "ghg_scope1",
+   "label": "Scope 1 GHG emissions",
+   "current": {
+    "id": "met_01m4gcq8faddjk1v7jswa572r7",
+    "metric_key": "ghg_scope1",
+    "label": "Scope 1 GHG emissions",
+    "value": 48210.0,
+    "unit": "tCO2e",
+    "normalized_value": 48210.0,
+    "normalized_unit": "tCO2e",
+    "period_label": "FY2025",
+    "period_end": "2025-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_2bcdd596b43ca7418941",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 4,
+    "source": "Sustainability report FY2025, p.4"
+   },
+   "prior": {
+    "id": "met_01m4gcq8fagm0nmk9fzap4jt11",
+    "metric_key": "ghg_scope1",
+    "label": "Scope 1 GHG emissions",
+    "value": 50115.0,
+    "unit": "tCO2e",
+    "normalized_value": 50115.0,
+    "normalized_unit": "tCO2e",
+    "period_label": "FY2024",
+    "period_end": "2024-12-31",
+    "qualifiers": {},
+    "confidence": 0.92,
+    "method": "table",
+    "passage_id": "ev_2bcdd596b43ca7418941",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+    "page": 4,
+    "source": "Sustainability report FY2025, p.4"
+   },
+   "change": -0.038,
+   "sources": 5
+  }
+ ],
+ "company": {
+  "id": "cmp_01m4gcq87cjbntwy43yqjqsb7s",
+  "name": "Aldermere Materials Group",
+  "industry": "Building materials",
+  "country": "United Kingdom",
+  "fiscal_year_end": "12-31"
+ },
+ "run": {
+  "id": "run_01m4gcwx38x017m8c6wg7f8vyf",
+  "requirement_set_id": "gri-302-305-2016@1.1.0",
+  "mode": "hybrid",
+  "llm_model": "openai/gpt-oss-120b",
+  "period_label": "FY2025",
+  "summary": {
+   "counts": {
+    "partially_supported": 4,
+    "supported": 4,
+    "conflicting": 1
+   },
+   "requirements": 9,
+   "excluded": 0,
+   "average_completeness": 0.877,
+   "needs_review": 1,
+   "actions": {
+    "created": 2,
+    "updated": 4,
+    "reopened": 0,
+    "gap_closed": 0
+   }
+  },
+  "finished_at": "2026-10-09T13:16:07.583004+00:00"
+ },
+ "findings": [
+  {
+   "id": "fnd_01m4gcx10ksyweb41mn8jhddj8",
+   "display_code": "GRI 305-1",
+   "title": "Direct (Scope 1) GHG emissions",
+   "status": "partially_supported",
+   "completeness": 0.9167,
+   "missing_elements": [
+    "Biogenic CO2 emissions reported separately"
+   ],
+   "primary_evidence": {
+    "passage_id": "ev_2bcdd596b43ca7418941",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 4,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "Table 4: Greenhouse gas emissions \u2014 Scope 1 emissions (tCO2e): 2025: 48,210; 2024: 50,115; 2023: 52,900",
+    "bbox": [
+     72.8,
+     403.3,
+     522.2,
+     423.8
+    ],
+    "role": "supporting"
+   },
+   "evidence_count": 9,
+   "method": "hybrid"
+  },
+  {
+   "id": "fnd_01m4gcx10nft809mzef6max5fg",
+   "display_code": "GRI 305-2",
+   "title": "Energy indirect (Scope 2) GHG emissions",
+   "status": "partially_supported",
+   "completeness": 0.8,
+   "missing_elements": [
+    "Market-based Scope 2 figure (applies where contractual instruments are used)"
+   ],
+   "primary_evidence": {
+    "passage_id": "ev_0fcbe54fa988b5dc1a6d",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 4,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "Table 4: Greenhouse gas emissions \u2014 Scope 2 emissions \u2013 location-based (tCO2e): 2025: 21,940; 2024: 23,020; 2023: 24,310",
+    "bbox": [
+     72.8,
+     423.8,
+     522.2,
+     444.2
+    ],
+    "role": "supporting"
+   },
+   "evidence_count": 7,
+   "method": "hybrid"
+  },
+  {
+   "id": "fnd_01m4gcx10q960bt2q7w9xx30cq",
+   "display_code": "GRI 305-3",
+   "title": "Other indirect (Scope 3) GHG emissions",
+   "status": "partially_supported",
+   "completeness": 0.4286,
+   "missing_elements": [
+    "Gross Scope 3 emissions value (tCO2e)",
+    "Reporting period stated with the figure"
+   ],
+   "primary_evidence": {
+    "passage_id": "ev_694511f1232e6d142683",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 5,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "We have begun screening our Scope 3 emissions across the 15 categories of the GHG Protocol Corporate Value Chain (Scope 3) Standard. Purchased goods and services (Category 1) and upstream transportation and distribution (Category 4) are exp",
+    "bbox": [
+     72.5,
+     124.2,
+     507.9,
+     185.3
+    ],
+    "role": "supporting"
+   },
+   "evidence_count": 2,
+   "method": "hybrid"
+  },
+  {
+   "id": "fnd_01m4gcx10rgehb4j9rkyhpahtr",
+   "display_code": "GRI 305-4",
+   "title": "GHG emissions intensity",
+   "status": "supported",
+   "completeness": 1.0,
+   "missing_elements": [],
+   "primary_evidence": {
+    "passage_id": "ev_469e826cc3a8f7eaeae0",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 4,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "Table 4: Greenhouse gas emissions \u2014 GHG intensity (tCO2e per tonne of product): 2025: 0.172; 2024: 0.176; 2023: 0.184",
+    "bbox": [
+     72.8,
+     464.6,
+     522.2,
+     485.0
+    ],
+    "role": "supporting"
+   },
+   "evidence_count": 2,
+   "method": "hybrid"
+  },
+  {
+   "id": "fnd_01m4gcx10srd6vnxttpf51cax0",
+   "display_code": "GRI 305-5",
+   "title": "Reduction of GHG emissions",
+   "status": "supported",
+   "completeness": 1.0,
+   "missing_elements": [],
+   "primary_evidence": {
+    "passage_id": "ev_85840771acb64d9d2f1f",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 7,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "Kiln heat-recovery projects at our Ashby and Kelso plants and the replacement of fourteen diesel loaders with electric models reduced Scope 1 emissions by 2,350 tCO2e in 2025 compared with 2024.",
+    "bbox": [
+     72.5,
+     124.2,
+     521.6,
+     170.1
+    ],
+    "role": "supporting"
+   },
+   "evidence_count": 5,
+   "method": "hybrid"
+  },
+  {
+   "id": "fnd_01m4gcx10t4zqy514mmgspmxgb",
+   "display_code": "GRI 302-1",
+   "title": "Energy consumption within the organization",
+   "status": "conflicting",
+   "completeness": 1.0,
+   "missing_elements": [],
+   "primary_evidence": {
+    "passage_id": "ev_43ee3ac9fd3662700e82",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 6,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "Table 5: Energy consumption \u2014 Total energy consumption (MWh): 2025: 412,300; 2024: 431,800",
+    "bbox": [
+     72.8,
+     285.8,
+     522.2,
+     306.1
+    ],
+    "role": "conflicting"
+   },
+   "evidence_count": 8,
+   "method": "hybrid"
+  },
+  {
+   "id": "fnd_01m4gcx10v94qftj0z61pphxk5",
+   "display_code": "GRI 302-3",
+   "title": "Energy intensity",
+   "status": "supported",
+   "completeness": 1.0,
+   "missing_elements": [],
+   "primary_evidence": {
+    "passage_id": "ev_b4c7d062625b042fe6fd",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 6,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "Table 5: Energy consumption \u2014 Energy intensity (MWh per tonne of product): 2025: 1.01; 2024: 1.04",
+    "bbox": [
+     72.8,
+     326.5,
+     522.2,
+     346.9
+    ],
+    "role": "supporting"
+   },
+   "evidence_count": 3,
+   "method": "hybrid"
+  },
+  {
+   "id": "fnd_01m4gcx10vnnnxefmzav4rksfn",
+   "display_code": "GRI 302-4",
+   "title": "Reduction of energy consumption",
+   "status": "supported",
+   "completeness": 1.0,
+   "missing_elements": [],
+   "primary_evidence": {
+    "passage_id": "ev_f38d48c444a257dbd8bd",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 7,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "Efficiency projects delivered energy savings of 6,800 MWh in 2025 against the 2024 baseline, mainly through reduced natural gas use in kilns and dryers.",
+    "bbox": [
+     72.5,
+     177.9,
+     508.5,
+     208.5
+    ],
+    "role": "supporting"
+   },
+   "evidence_count": 3,
+   "method": "hybrid"
+  },
+  {
+   "id": "fnd_01m4gcx10wmp504et9wv3stvbc",
+   "display_code": "GRI 2-5",
+   "title": "External assurance",
+   "status": "partially_supported",
+   "completeness": 0.75,
+   "missing_elements": [
+    "Assurance standard applied"
+   ],
+   "primary_evidence": {
+    "passage_id": "ev_eb68fa39504adcf37478",
+    "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+    "page": 2,
+    "document": "Sustainability report FY2025",
+    "period_label": "FY2025",
+    "text": "Our 2025 environmental and safety data has not been externally assured. The Audit and Risk Committee reviewed the data collection process, and we intend to obtain limited assurance over Scope 1 and 2 emissions for 2026.",
+    "bbox": [
+     72.5,
+     372.6,
+     520.1,
+     418.5
+    ],
+    "role": "supporting"
+   },
+   "evidence_count": 1,
+   "method": "hybrid"
+  }
+ ],
+ "conflict": {
+  "finding_id": "fnd_01m4gcx10t4zqy514mmgspmxgb",
+  "display_code": "GRI 302-1",
+  "title": "Energy consumption within the organization",
+  "rationale": "Total energy consumption has conflicting figures (412,300 MWh vs 1,532,000 GJ), making the element unclear. Fuel consumption (natural gas) and electricity consumption are clearly disclosed (ev_9a05509046d0fdf4976b, ev_8a83c082837f5a593f30). Reporting period FY2025 is stated with the figures (ev_43ee3ac9fd3662700e82). Source of conversion factors is provided (ev_b24b03dc6f8c1f4e99dd).",
+  "conflict": {
+   "metric_key": "energy_total",
+   "label": "Total energy consumption",
+   "unit": "MWh",
+   "period": "FY2025",
+   "relative_difference": 0.0322,
+   "low": {
+    "metric_id": "met_01m4gcq8fa47nnmetx6m0r2w9v",
+    "passage_id": "ev_43ee3ac9fd3662700e82",
+    "value": 412300.0,
+    "unit": "MWh",
+    "normalized_value": 412300.0,
+    "normalized_unit": "MWh",
+    "source": "Sustainability report FY2025, p.6",
+    "method": "table",
+    "confidence": 0.92
+   },
+   "high": {
+    "metric_id": "met_01m4gcq8nr754rn37ekj1888nt",
+    "passage_id": "ev_b77ac9f337ad67257194",
+    "value": 1532000.0,
+    "unit": "GJ",
+    "normalized_value": 425555.55555555556,
+    "normalized_unit": "MWh",
+    "source": "Annual report FY2025, p.5",
+    "method": "text",
+    "confidence": 0.85
+   },
+   "values": [
+    {
+     "metric_id": "met_01m4gcq8fa47nnmetx6m0r2w9v",
+     "passage_id": "ev_43ee3ac9fd3662700e82",
+     "value": 412300.0,
+     "unit": "MWh",
+     "normalized_value": 412300.0,
+     "normalized_unit": "MWh",
+     "source": "Sustainability report FY2025, p.6",
+     "method": "table",
+     "confidence": 0.92
+    },
+    {
+     "metric_id": "met_01m4gcq8fa3aqtv8c5krxk7x6q",
+     "passage_id": "ev_b24b03dc6f8c1f4e99dd",
+     "value": 412300.0,
+     "unit": "MWh",
+     "normalized_value": 412300.0,
+     "normalized_unit": "MWh",
+     "source": "Sustainability report FY2025, p.6",
+     "method": "text",
+     "confidence": 0.85
+    },
+    {
+     "metric_id": "met_01m4gcq8nr754rn37ekj1888nt",
+     "passage_id": "ev_b77ac9f337ad67257194",
+     "value": 1532000.0,
+     "unit": "GJ",
+     "normalized_value": 425555.55555555556,
+     "normalized_unit": "MWh",
+     "source": "Annual report FY2025, p.5",
+     "method": "text",
+     "confidence": 0.85
+    }
+   ]
+  },
+  "low": {
+   "src": "/demo/pages/doc_01m4gcq87e5k9e321mrzfz2y6h/6.png",
+   "size": [
+    595.0,
+    842.0
+   ],
+   "bbox": [
+    72.8,
+    285.8,
+    522.2,
+    306.1
+   ],
+   "document": "Sustainability report FY2025",
+   "title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+   "page": 6,
+   "text": "Table 5: Energy consumption \u2014 Total energy consumption (MWh): 2025: 412,300; 2024: 431,800",
+   "id": "ev_43ee3ac9fd3662700e82"
+  },
+  "high": {
+   "src": "/demo/pages/doc_01m4gcq87gjpst1r4b40rc3z82/5.png",
+   "size": [
+    595.0,
+    842.0
+   ],
+   "bbox": [
+    72.5,
+    147.4,
+    478.5,
+    162.9
+   ],
+   "document": "Annual report FY2025",
+   "title": "Aldermere Materials Group \u2014 Annual Report and Accounts 2025",
+   "page": 5,
+   "text": "In 2025 the Group's total energy consumption was 1,532,000 GJ (2024: 1,554,500 GJ).",
+   "id": "ev_b77ac9f337ad67257194"
+  },
+  "action": {
+   "id": "act_01m4gcwwyqeq8h2rje89bhm69d",
+   "company_id": "cmp_01m4gcq87cjbntwy43yqjqsb7s",
+   "finding_id": "fnd_01m4gcx10t4zqy514mmgspmxgb",
+   "run_id": "run_01m4gcwx38x017m8c6wg7f8vyf",
+   "set_key": "gri-302-305-2016",
+   "requirement_code": "302-1",
+   "gap_key": "conflict:energy_total",
+   "title": "Reconcile total energy consumption for FY2025",
+   "detail": "The documents disagree: 412,300 MWh (Sustainability report FY2025, p.6) versus 1,532,000 GJ (Annual report FY2025, p.5). Confirm the authoritative figure, correct or footnote the other document, and record any restatement.",
+   "rationale": "3.2% difference after unit conversion.",
+   "owner": "Head of Finance",
+   "due_date": "2026-10-30",
+   "effort": "medium",
+   "priority_score": 0.64,
+   "priority_components": {
+    "I": 1.0,
+    "G": 0.8,
+    "U": 0.8,
+    "P": 0.64,
+    "explanation": "Importance 1.0 \u00d7 gap 0.80 \u00d7 urgency 0.8 (Due in 75 days) = 0.64"
+   },
+   "status": "in_progress",
+   "depends_on": [],
+   "gap_closed_run_id": null,
+   "created_at": "2026-10-09T13:16:03.415682+00:00",
+   "updated_at": "2026-10-09T13:16:08.059417+00:00"
+  }
+ },
+ "benchmark": {
+  "companies": [
+   {
+    "id": "cmp_01m4gcq87cjbntwy43yqjqsb7s",
+    "name": "Aldermere Materials Group",
+    "is_focal": true,
+    "is_sample": true,
+    "fiscal_year_end": "12-31",
+    "period": {
+     "label": "FY2025",
+     "start": "2025-01-01",
+     "end": "2025-12-31",
+     "description": "01 Jan 2025 \u2013 31 Dec 2025"
+    },
+    "boundary": {
+     "approach": "operational control",
+     "passage_id": "ev_eb323b4dbf22143b6977",
+     "source": "Sustainability report FY2025, p.2"
+    },
+    "documents": 2
+   },
+   {
+    "id": "cmp_01m4gcq87h54vz9cpk9m2m4513",
+    "name": "Corvane Industries",
+    "is_focal": false,
+    "is_sample": true,
+    "fiscal_year_end": "12-31",
+    "period": {
+     "label": "FY2025",
+     "start": "2025-01-01",
+     "end": "2025-12-31",
+     "description": "01 Jan 2025 \u2013 31 Dec 2025"
+    },
+    "boundary": null,
+    "documents": 1
+   },
+   {
+    "id": "cmp_01m4gcq87hwq50bm8vhdsydjr8",
+    "name": "Tessaline Building Products",
+    "is_focal": false,
+    "is_sample": true,
+    "fiscal_year_end": "03-31",
+    "period": {
+     "label": "FY2025",
+     "start": "2024-04-01",
+     "end": "2025-03-31",
+     "description": "01 Apr 2024 \u2013 31 Mar 2025"
+    },
+    "boundary": {
+     "approach": "financial control",
+     "passage_id": "ev_8e90fff5e02940d1d5b1",
+     "source": "Sustainability report FY2025, p.2"
+    },
+    "documents": 1
+   }
+  ],
+  "rows": [
+   {
+    "metric_key": "ghg_scope1",
+    "label": "Scope 1 emissions",
+    "unit": "tCO2e",
+    "question": "How large are direct emissions?",
+    "lower_is_better": true,
+    "cells": [
+     {
+      "company_id": "cmp_01m4gcq87cjbntwy43yqjqsb7s",
+      "status": "disclosed",
+      "metric_id": "met_01m4gcq8faddjk1v7jswa572r7",
+      "value": 48210.0,
+      "unit": "tCO2e",
+      "normalized_value": 48210.0,
+      "normalized_unit": "tCO2e",
+      "period_label": "FY2025",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "passage_id": "ev_2bcdd596b43ca7418941",
+      "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+      "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+      "source": "Sustainability report FY2025, p.4",
+      "page": 4,
+      "method": "table",
+      "confidence": 0.92,
+      "qualifiers": {},
+      "alternatives": 2,
+      "notes": []
+     },
+     {
+      "company_id": "cmp_01m4gcq87h54vz9cpk9m2m4513",
+      "status": "disclosed",
+      "metric_id": "met_01m4gcq9bra5p77h42a5cc3n07",
+      "value": 63.4,
+      "unit": "ktCO2e",
+      "normalized_value": 63400.0,
+      "normalized_unit": "tCO2e",
+      "period_label": "FY2025",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "passage_id": "ev_0968185038f3e94941f8",
+      "document_id": "doc_01m4gcq87je4jxd8zm5j1v28rp",
+      "document_title": "Corvane Industries \u2014 Sustainability Update 2025",
+      "source": "Sustainability report FY2025, p.3",
+      "page": 3,
+      "method": "table",
+      "confidence": 0.865,
+      "qualifiers": {},
+      "alternatives": 1,
+      "notes": [
+       {
+        "kind": "converted",
+        "text": "Converted from ktCO2e."
+       },
+       {
+        "kind": "ocr",
+        "text": "Read from a scanned page (OCR confidence 0.94)."
+       },
+       {
+        "kind": "boundary",
+        "text": "Consolidation approach not stated."
+       }
+      ]
+     },
+     {
+      "company_id": "cmp_01m4gcq87hwq50bm8vhdsydjr8",
+      "status": "disclosed",
+      "metric_id": "met_01m4gcq8wb8zhev0dferv1vaf8",
+      "value": 41870.0,
+      "unit": "tCO2e",
+      "normalized_value": 41870.0,
+      "normalized_unit": "tCO2e",
+      "period_label": "FY2025",
+      "period_start": "2024-04-01",
+      "period_end": "2025-03-31",
+      "passage_id": "ev_8d981881d1aa98b8bf8a",
+      "document_id": "doc_01m4gcq87h4j5h63ktsgbydhxr",
+      "document_title": "Tessaline Building Products \u2014 Annual and Sustainability Report 2024/25",
+      "source": "Sustainability report FY2025, p.3",
+      "page": 3,
+      "method": "table",
+      "confidence": 0.92,
+      "qualifiers": {},
+      "alternatives": 0,
+      "notes": [
+       {
+        "kind": "period",
+        "text": "Different reporting period (01 Apr 2024 \u2013 31 Mar 2025)."
+       },
+       {
+        "kind": "boundary",
+        "text": "Consolidated by financial control (focal company: operational control)."
+       }
+      ]
+     }
+    ],
+    "coverage": "3/3",
+    "comparable": false,
+    "comparability": "Limited comparability \u2014 see notes"
+   },
+   {
+    "metric_key": "energy_total",
+    "label": "Total energy consumption",
+    "unit": "MWh",
+    "question": "How much energy is consumed?",
+    "lower_is_better": true,
+    "cells": [
+     {
+      "company_id": "cmp_01m4gcq87cjbntwy43yqjqsb7s",
+      "status": "disclosed",
+      "metric_id": "met_01m4gcq8fa47nnmetx6m0r2w9v",
+      "value": 412300.0,
+      "unit": "MWh",
+      "normalized_value": 412300.0,
+      "normalized_unit": "MWh",
+      "period_label": "FY2025",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "passage_id": "ev_43ee3ac9fd3662700e82",
+      "document_id": "doc_01m4gcq87e5k9e321mrzfz2y6h",
+      "document_title": "Aldermere Materials Group \u2014 Sustainability Report 2025",
+      "source": "Sustainability report FY2025, p.6",
+      "page": 6,
+      "method": "table",
+      "confidence": 0.92,
+      "qualifiers": {},
+      "alternatives": 2,
+      "notes": [
+       {
+        "kind": "conflict",
+        "text": "2 different values appear in this company's documents; the highest-confidence value is shown."
+       }
+      ]
+     },
+     {
+      "company_id": "cmp_01m4gcq87h54vz9cpk9m2m4513",
+      "status": "disclosed",
+      "metric_id": "met_01m4gcq9brbahcb05fc4y5j6ny",
+      "value": 498.0,
+      "unit": "GWh",
+      "normalized_value": 498000.0,
+      "normalized_unit": "MWh",
+      "period_label": "FY2025",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "passage_id": "ev_604105ee3a6cc8e068e4",
+      "document_id": "doc_01m4gcq87je4jxd8zm5j1v28rp",
+      "document_title": "Corvane Industries \u2014 Sustainability Update 2025",
+      "source": "Sustainability report FY2025, p.3",
+      "page": 3,
+      "method": "table",
+      "confidence": 0.865,
+      "qualifiers": {},
+      "alternatives": 1,
+      "notes": [
+       {
+        "kind": "converted",
+        "text": "Converted from GWh."
+       },
+       {
+        "kind": "ocr",
+        "text": "Read from a scanned page (OCR confidence 0.94)."
+       }
+      ]
+     },
+     {
+      "company_id": "cmp_01m4gcq87hwq50bm8vhdsydjr8",
+      "status": "disclosed",
+      "metric_id": "met_01m4gcq8wbdrped10r62db6a6w",
+      "value": 1298000.0,
+      "unit": "GJ",
+      "normalized_value": 360555.55555555556,
+      "normalized_unit": "MWh",
+      "period_label": "FY2025",
+      "period_start": "2024-04-01",
+      "period_end": "2025-03-31",
+      "passage_id": "ev_cdab2950290dba9bce3c",
+      "document_id": "doc_01m4gcq87h4j5h63ktsgbydhxr",
+      "document_title": "Tessaline Building Products \u2014 Annual and Sustainability Report 2024/25",
+      "source": "Sustainability report FY2025, p.4",
+      "page": 4,
+      "method": "text",
+      "confidence": 0.85,
+      "qualifiers": {},
+      "alternatives": 0,
+      "notes": [
+       {
+        "kind": "converted",
+        "text": "Converted from GJ."
+       },
+       {
+        "kind": "period",
+        "text": "Different reporting period (01 Apr 2024 \u2013 31 Mar 2025)."
+       }
+      ]
+     }
+    ],
+    "coverage": "3/3",
+    "comparable": false,
+    "comparability": "Limited comparability \u2014 see notes"
+   },
+   {
+    "metric_key": "ghg_scope3",
+    "label": "Scope 3 emissions",
+    "unit": "tCO2e",
+    "question": "Are value-chain emissions quantified?",
+    "lower_is_better": true,
+    "cells": [
+     {
+      "company_id": "cmp_01m4gcq87cjbntwy43yqjqsb7s",
+      "status": "not_disclosed",
+      "value": null,
+      "notes": [
+       {
+        "kind": "missing",
+        "text": "Not disclosed in the documents provided."
+       }
+      ]
+     },
+     {
+      "company_id": "cmp_01m4gcq87h54vz9cpk9m2m4513",
+      "status": "not_disclosed",
+      "value": null,
+      "notes": [
+       {
+        "kind": "missing",
+        "text": "Not disclosed in the documents provided."
+       }
+      ]
+     },
+     {
+      "company_id": "cmp_01m4gcq87hwq50bm8vhdsydjr8",
+      "status": "disclosed",
+      "metric_id": "met_01m4gcq8wbqbmmyz74h7jwshpt",
+      "value": 186300.0,
+      "unit": "tCO2e",
+      "normalized_value": 186300.0,
+      "normalized_unit": "tCO2e",
+      "period_label": "FY2025",
+      "period_start": "2024-04-01",
+      "period_end": "2025-03-31",
+      "passage_id": "ev_11bae1db74e77c1391f4",
+      "document_id": "doc_01m4gcq87h4j5h63ktsgbydhxr",
+      "document_title": "Tessaline Building Products \u2014 Annual and Sustainability Report 2024/25",
+      "source": "Sustainability report FY2025, p.3",
+      "page": 3,
+      "method": "table",
+      "confidence": 0.92,
+      "qualifiers": {},
+      "alternatives": 0,
+      "notes": [
+       {
+        "kind": "period",
+        "text": "Different reporting period (01 Apr 2024 \u2013 31 Mar 2025)."
+       },
+       {
+        "kind": "boundary",
+        "text": "Consolidated by financial control (focal company: operational control)."
+       }
+      ]
+     }
+    ],
+    "coverage": "1/3",
+    "comparable": false,
+    "comparability": "Insufficient disclosure to compare"
+   }
+  ]
+ },
+ "diff": {
+  "before_run_id": "run_01m4gcq9cmbf3mze3bpf7pk5hk",
+  "after_run_id": "run_01m4gcwx38x017m8c6wg7f8vyf",
+  "requirement_set_changed": true,
+  "requirement_sets": {
+   "before": "gri-302-305-2016@1.0.0",
+   "after": "gri-302-305-2016@1.1.0"
+  },
+  "document_changes": [],
+  "version_changes": [],
+  "items": [
+   {
+    "requirement_code": "305-1",
+    "before": {
+     "status": "supported",
+     "completeness": 1.0,
+     "finding_id": "fnd_01m4gcwwy9s2fjyj7b00w6c8n9"
+    },
+    "after": {
+     "status": "partially_supported",
+     "completeness": 0.9167,
+     "finding_id": "fnd_01m4gcx10ksyweb41mn8jhddj8"
+    },
+    "status_changed": true,
+    "evidence_added": [],
+    "evidence_removed": [],
+    "element_changes": [
+     {
+      "key": "biogenic",
+      "before": null,
+      "after": "missing"
+     }
+    ],
+    "causes": [
+     "requirement revised"
+    ]
+   },
+   {
+    "requirement_code": "305-2",
+    "before": {
+     "status": "supported",
+     "completeness": 1.0,
+     "finding_id": "fnd_01m4gcwwydr9j8qh3ycqts7sms"
+    },
+    "after": {
+     "status": "partially_supported",
+     "completeness": 0.8,
+     "finding_id": "fnd_01m4gcx10nft809mzef6max5fg"
+    },
+    "status_changed": true,
+    "evidence_added": [],
+    "evidence_removed": [],
+    "element_changes": [
+     {
+      "key": "market_value",
+      "before": null,
+      "after": "missing"
+     }
+    ],
+    "causes": [
+     "requirement revised"
+    ]
+   }
+  ],
+  "summary": "2 findings changed status; catalogue revised from v1.0.0 to v1.1.0"
+ }
+}

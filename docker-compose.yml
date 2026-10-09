@@ -1,0 +1,121 @@
+# Veridion as a production-shaped stack on one machine:
+#   postgres -> migrate (runs once) -> api + worker -> web on http://localhost:3000
+#
+#   docker compose up --build
+#   docker compose run --rm api veridion seed demo --mode rules     # optional sample workspace
+#
+# Settings come from the repository's .env (see .env.example). SECRET_KEY is required.
+# For a real deployment put a TLS-terminating proxy in front of `web`, set COOKIE_SECURE=true,
+# change POSTGRES_PASSWORD, and use S3-compatible storage once you run more than one host.
+
+name: veridion
+
+x-api-image: &api-image
+  build: ./apps/api
+  image: veridion-api:local
+
+x-api-environment: &api-environment
+  VERIDION_ENV: production
+  SECRET_KEY: ${SECRET_KEY:?Set SECRET_KEY in .env (see .env.example)}
+  DATABASE_URL: postgresql+psycopg://veridion:${POSTGRES_PASSWORD:-veridion}@postgres:5432/veridion
+  STORAGE_BACKEND: ${STORAGE_BACKEND:-local}
+  STORAGE_DIR: /app/var/storage
+  S3_BUCKET: ${S3_BUCKET:-}
+  S3_ENDPOINT_URL: ${S3_ENDPOINT_URL:-}
+  S3_REGION: ${S3_REGION:-}
+  S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-}
+  S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
+  COOKIE_SECURE: ${COOKIE_SECURE:-false}
+  CORS_ORIGINS: ${SITE_URL:-http://localhost:3000}
+  PLATFORM_ADMIN_EMAILS: ${PLATFORM_ADMIN_EMAILS:-}
+  ALLOW_REGISTRATION: ${ALLOW_REGISTRATION:-true}
+  OCR_ENABLED: "true"
+  LLM_PROVIDER: ${LLM_PROVIDER:-none}
+  GROQ_API_KEY: ${GROQ_API_KEY:-}
+  LLM_BASE_URL: ${LLM_BASE_URL:-}
+  LLM_API_KEY: ${LLM_API_KEY:-}
+  LLM_MODEL: ${LLM_MODEL:-openai/gpt-oss-120b}
+  EMBEDDED_WORKER: "false"
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: veridion
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-veridion}
+      POSTGRES_DB: veridion
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U veridion -d veridion"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  migrate:
+    <<: *api-image
+    command: ["veridion", "db", "upgrade"]
+    environment: *api-environment
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    <<: *api-image
+    command: ["veridion", "serve", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      <<: *api-environment
+      WEB_CONCURRENCY: ${API_WORKERS:-2}
+      # Only `web` can reach the API on this private network; trust its forwarding headers.
+      FORWARDED_ALLOW_IPS: "172.16.0.0/12,192.168.0.0/16,10.0.0.0/8"
+    volumes:
+      - storage:/app/var/storage
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 6
+    restart: unless-stopped
+
+  worker:
+    <<: *api-image
+    command: ["veridion", "worker"]
+    environment: *api-environment
+    volumes:
+      - storage:/app/var/storage
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    # SIGTERM lets the current job finish; model-assisted assessments can take a minute or two.
+    stop_grace_period: 120s
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./apps/web
+      args:
+        VERIDION_API_URL: http://api:8000
+        NEXT_PUBLIC_SITE_URL: ${SITE_URL:-http://localhost:3000}
+    image: veridion-web:local
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      start_period: 15s
+      retries: 4
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  storage:

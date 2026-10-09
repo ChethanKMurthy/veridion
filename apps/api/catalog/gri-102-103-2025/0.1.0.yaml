@@ -1,0 +1,296 @@
+# Veridion requirement catalogue — DRAFT
+# ------------------------------------------------------------------------------
+# Disclosure numbers and titles follow GRI 102: Climate Change 2025 and
+# GRI 103: Energy 2025 (published June 2025). The ELEMENTS below are mapped from
+# the equivalent GRI 305 / GRI 302 (2016) requirements and have NOT yet been
+# verified against the official 2025 text. Treat results from this set as
+# indicative until the catalogue is reviewed and published as 1.0.0.
+# ------------------------------------------------------------------------------
+key: gri-102-103-2025
+version: 0.1.0
+title: Climate & Energy — GRI 102 and GRI 103 (2025 editions)
+framework: GRI
+review_status: draft
+description: >
+  Early-adoption preview of the GRI climate and energy disclosures that replace
+  GRI 305-1 to 305-5 and GRI 302 from 1 January 2027.
+standards:
+  - name: "GRI 102: Climate Change 2025"
+    url: https://www.globalreporting.org/publications/documents/english/gri-102-climate-change-2025/
+  - name: "GRI 103: Energy 2025"
+    url: https://www.globalreporting.org/standards/
+effective_from: 2027-01-01
+effective_to: null
+effective_rule: >
+  GRI states that use of GRI 103: Energy 2025 is required for all reporting on energy
+  published on 1 January 2027 or later, with earlier adoption encouraged; GRI 102:
+  Climate Change 2025 takes effect on the same date. Some commentators describe the
+  trigger as reporting periods beginning on or after that date — confirm against the
+  official text for the report being assessed.
+supersedes: gri-302-305-2016
+notes: >
+  Draft catalogue. Element definitions require verification against the official
+  GRI 102 and GRI 103 texts before results are relied on.
+changelog:
+  - version: 0.1.0
+    date: 2026-10-05
+    changes:
+      - Draft mapping of GRI 102-4 to 102-8, 102-10, 103-2 and 103-4 using 2016-edition element equivalents.
+
+requirements:
+  - code: "102-4"
+    display_code: GRI 102-4
+    title: GHG emissions reduction targets and progress
+    topic: GHG emissions
+    importance: 3
+    summary: >
+      Emissions reduction targets, the base year and scopes they cover, and progress
+      made against them. (Draft element mapping.)
+    applicability: Applies when climate change is a material topic.
+    source_reference: "GRI 102: Climate Change 2025, Disclosure 102-4"
+    source_url: https://www.globalreporting.org/publications/documents/english/gri-102-climate-change-2025/
+    metric_keys: []
+    search_terms: ["reduction target", "net zero", "science-based target", "sbti", "base year", "interim target", "progress against target"]
+    related_terms: ["target", "net zero", "reduc", "decarboni"]
+    elements:
+      - key: target
+        label: Quantified reduction target with a target year
+        weight: 3
+        check:
+          type: pattern
+          patterns: ['(?:reduc\w*|cut)\s+[^.]{0,60}\d{1,3}\s?%[^.]{0,60}by\s+20\d\d', '\d{1,3}\s?%\s+(?:reduction|lower)[^.]{0,80}by\s+20\d\d', 'net[\s-]zero[^.]{0,40}by\s+20\d\d']
+        action:
+          title: Set out quantified targets with target years
+          detail: Disclose each emissions target as a percentage or absolute reduction with a target year.
+          effort: medium
+      - key: base_year
+        label: Base year for targets
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['base[\s-]?year', 'baseline', '(?:against|relative\s+to|compared\s+(?:with|to))\s+(?:a\s+|the\s+)?(?:19|20)\d\d']
+          context: ['target', 'reduc', 'net[\s-]zero']
+        action:
+          title: Disclose the base year for each target
+          detail: State the base year and base-year emissions for each target.
+          effort: low
+      - key: scopes
+        label: Scopes covered by targets
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['target[^.]{0,100}scope\s*[123]', 'scope\s*[123][^.]{0,100}target']
+        action:
+          title: Specify scopes covered by targets
+          detail: State which scopes each target covers.
+          effort: low
+      - key: interim
+        label: Interim (near-term) target
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['interim\s+target', 'near[\s-]term\s+target', 'by\s+20(?:2\d|30)\b']
+          context: ['target', 'reduc']
+        action:
+          title: Add an interim target
+          detail: Long-term goals such as net zero should be supported by near-term targets.
+          effort: medium
+
+  - code: "102-5"
+    display_code: GRI 102-5
+    title: Scope 1 GHG emissions
+    topic: GHG emissions
+    importance: 3
+    summary: Gross Scope 1 GHG emissions with methodology and boundary. (Draft element mapping from GRI 305-1.)
+    applicability: Applies when climate change is a material topic.
+    source_reference: "GRI 102: Climate Change 2025, Disclosure 102-5"
+    source_url: https://www.globalreporting.org/publications/documents/english/gri-102-climate-change-2025/
+    metric_keys: [ghg_scope1]
+    search_terms: ["scope 1", "direct emissions", "tco2e", "stationary combustion", "process emissions"]
+    related_terms: ["emission", "ghg", "greenhouse", "carbon", "fuel"]
+    elements:
+      - key: value
+        label: Gross Scope 1 emissions value (tCO2e)
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_scope1]}
+        action: {title: "Obtain the gross Scope 1 emissions figure", detail: "Request the gross Scope 1 total in tCO2e with activity data and calculations.", effort: high}
+      - key: period
+        label: Reporting period stated with the figure
+        weight: 2
+        check: {type: metric_period, metric_keys: [ghg_scope1]}
+        action: {title: "Confirm the period covered by the Scope 1 figure", detail: "State the reporting period alongside the value.", effort: low, depends_on: [value]}
+      - key: boundary
+        label: Consolidation approach
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['operational[\s-]control', 'financial[\s-]control', 'equity[\s-]share']
+          context: ['emission', 'ghg', 'scope', 'consolidat', 'boundar', 'report']
+        action: {title: "Confirm the consolidation approach", detail: "Document the consolidation approach used for GHG reporting.", effort: low}
+      - key: biogenic
+        label: Biogenic CO2 emissions reported separately
+        weight: 1
+        check:
+          type: any_of
+          checks:
+            - {type: metric, metric_keys: [ghg_biogenic]}
+            - {type: pattern, patterns: ['biogenic']}
+        action: {title: "Report biogenic CO2 separately", detail: "Quantify biogenic CO2 emissions or state that none arise.", effort: medium}
+
+  - code: "102-6"
+    display_code: GRI 102-6
+    title: Scope 2 GHG emissions
+    topic: GHG emissions
+    importance: 3
+    summary: Gross Scope 2 GHG emissions using the location-based and market-based methods. (Draft element mapping from GRI 305-2.)
+    applicability: Applies when climate change is a material topic.
+    source_reference: "GRI 102: Climate Change 2025, Disclosure 102-6"
+    source_url: https://www.globalreporting.org/publications/documents/english/gri-102-climate-change-2025/
+    metric_keys: [ghg_scope2_location, ghg_scope2_market, ghg_scope2]
+    search_terms: ["scope 2", "location-based", "market-based", "purchased electricity", "tco2e"]
+    related_terms: ["emission", "electricity", "ghg", "carbon"]
+    elements:
+      - key: location_value
+        label: Location-based Scope 2 emissions (tCO2e)
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_scope2_location], weak_metric_keys: [ghg_scope2]}
+        action: {title: "Obtain the location-based Scope 2 figure", detail: "Calculate Scope 2 with grid-average emission factors.", effort: high}
+      - key: market_value
+        label: Market-based Scope 2 emissions (tCO2e)
+        weight: 2
+        check: {type: metric, metric_keys: [ghg_scope2_market]}
+        action: {title: "Obtain the market-based Scope 2 figure", detail: "Calculate Scope 2 with supplier-specific or residual-mix factors.", effort: medium}
+      - key: period
+        label: Reporting period stated with the figure
+        weight: 1
+        check: {type: metric_period, metric_keys: [ghg_scope2_location, ghg_scope2_market, ghg_scope2]}
+        action: {title: "Confirm the period covered by the Scope 2 figures", detail: "State the reporting period alongside the values.", effort: low}
+
+  - code: "102-7"
+    display_code: GRI 102-7
+    title: Scope 3 GHG emissions
+    topic: GHG emissions
+    importance: 3
+    summary: Gross Scope 3 GHG emissions by category. (Draft element mapping from GRI 305-3.)
+    applicability: Applies when climate change is a material topic.
+    source_reference: "GRI 102: Climate Change 2025, Disclosure 102-7"
+    source_url: https://www.globalreporting.org/publications/documents/english/gri-102-climate-change-2025/
+    metric_keys: [ghg_scope3]
+    search_terms: ["scope 3", "value chain emissions", "purchased goods and services", "category 1", "upstream transportation"]
+    related_terms: ["scope 3", "value chain", "supply chain", "supplier"]
+    elements:
+      - key: value
+        label: Gross Scope 3 emissions value (tCO2e)
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_scope3]}
+        action: {title: "Quantify Scope 3 emissions", detail: "Quantify material Scope 3 categories and report the gross total.", effort: high}
+      - key: categories
+        label: Scope 3 categories included
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['categor(?:y|ies)\s*\d', 'purchased\s+goods', 'upstream\s+transport', 'business\s+travel', 'use\s+of\s+sold\s+products', 'end[\s-]of[\s-]life']
+          context: ['scope\s*3', 'value\s+chain']
+        action: {title: "Report Scope 3 by category", detail: "Break down Scope 3 by GHG Protocol category.", effort: medium}
+
+  - code: "102-8"
+    display_code: GRI 102-8
+    title: GHG emissions intensity
+    topic: GHG emissions
+    importance: 2
+    summary: GHG emissions intensity ratios, reported per scope. (Draft element mapping from GRI 305-4.)
+    applicability: Applies when climate change is a material topic.
+    source_reference: "GRI 102: Climate Change 2025, Disclosure 102-8"
+    source_url: https://www.globalreporting.org/publications/documents/english/gri-102-climate-change-2025/
+    metric_keys: [ghg_intensity]
+    search_terms: ["emissions intensity", "intensity ratio", "tco2e per tonne", "carbon intensity"]
+    related_terms: ["intensity", "per tonne", "emission"]
+    elements:
+      - key: ratio
+        label: GHG emissions intensity ratio
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_intensity]}
+        action: {title: "Disclose a GHG intensity ratio", detail: "Report emissions per organization-specific metric.", effort: medium}
+      - key: per_scope
+        label: Intensity reported separately for each scope
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['scope\s*1[^.]{0,60}intensity[^.]{0,120}scope\s*2', 'intensity[^.]{0,60}scope\s*1[^.]{0,80}scope\s*2[^.]{0,40}separately']
+        action: {title: "Report intensity per scope", detail: "Report intensity ratios separately for Scope 1, Scope 2 and Scope 3.", effort: low}
+
+  - code: "102-10"
+    display_code: GRI 102-10
+    title: Carbon credits
+    topic: GHG emissions
+    importance: 1
+    summary: Use of carbon credits, their type and quality criteria. (Draft element mapping.)
+    applicability: Applies when the organization uses or plans to use carbon credits.
+    source_reference: "GRI 102: Climate Change 2025, Disclosure 102-10"
+    source_url: https://www.globalreporting.org/publications/documents/english/gri-102-climate-change-2025/
+    metric_keys: []
+    search_terms: ["carbon credits", "offsets", "offsetting", "verified carbon standard", "gold standard"]
+    related_terms: ["credit", "offset", "neutral"]
+    elements:
+      - key: position
+        label: Statement on the use of carbon credits
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['carbon\s+credits?', 'offset(?:s|ting)?\b', 'carbon[\s-]neutral']
+        action: {title: "State the position on carbon credits", detail: "Disclose whether carbon credits are used, and if so their type, volume and quality criteria.", effort: low}
+
+  - code: "103-2"
+    display_code: GRI 103-2
+    title: Energy consumption and generation within the organization
+    topic: Energy
+    importance: 3
+    summary: >
+      Fuel and electricity consumption within the organization, with a breakdown by energy
+      source and whether it is renewable or non-renewable. (Draft element mapping from GRI 302-1.)
+    applicability: Applies when energy is a material topic.
+    source_reference: "GRI 103: Energy 2025, Disclosure 103-2"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [energy_total, energy_fuel, energy_electricity]
+    search_terms: ["energy consumption", "fuel consumption", "electricity consumption", "renewable", "mwh", "gj"]
+    related_terms: ["energy", "electricity", "fuel", "consumption"]
+    elements:
+      - key: total
+        label: Total energy consumption
+        weight: 3
+        check: {type: metric, metric_keys: [energy_total]}
+        action: {title: "Obtain total energy consumption", detail: "Compile energy consumption by site and source.", effort: medium}
+      - key: renewable_split
+        label: Renewable / non-renewable breakdown of electricity
+        weight: 2
+        check:
+          type: any_of
+          checks:
+            - {type: metric, metric_keys: [energy_renewable_share]}
+            - type: pattern
+              patterns: ['renewable[^.]{0,60}electricity', 'electricity[^.]{0,60}renewable']
+        action: {title: "Break down electricity by renewable and non-renewable sources", detail: "Report purchased and self-generated electricity by source and renewable status.", effort: medium}
+
+  - code: "103-4"
+    display_code: GRI 103-4
+    title: Energy intensity
+    topic: Energy
+    importance: 1
+    summary: Energy intensity ratio, with the numerator and denominator reported. (Draft element mapping from GRI 302-3.)
+    applicability: Applies when energy is a material topic.
+    source_reference: "GRI 103: Energy 2025, Disclosure 103-4"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [energy_intensity]
+    search_terms: ["energy intensity", "mwh per tonne", "gj per tonne"]
+    related_terms: ["intensity", "per tonne", "energy"]
+    elements:
+      - key: ratio
+        label: Energy intensity ratio
+        weight: 3
+        check: {type: metric, metric_keys: [energy_intensity]}
+        action: {title: "Disclose an energy intensity ratio", detail: "Report energy per organization-specific metric.", effort: low}
+      - key: numerator
+        label: Energy consumption used as the numerator
+        weight: 1
+        check: {type: metric, metric_keys: [energy_total]}
+        action: {title: "Report the numerator", detail: "Report the energy consumption figure used in the ratio.", effort: low}

@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-10-09T13:16:41.498381+00:00",
+  "organization": "Veridion Demo Workspace",
+  "focal_company_id": "cmp_01m4gcq87cjbntwy43yqjqsb7s",
+  "company_ids": [
+    "cmp_01m4gcq87cjbntwy43yqjqsb7s",
+    "cmp_01m4gcq87h54vz9cpk9m2m4513",
+    "cmp_01m4gcq87hwq50bm8vhdsydjr8"
+  ],
+  "page_scale": 1.5,
+  "llm_model": "openai/gpt-oss-120b",
+  "notice": "Fictional sample companies and documents. Results were produced by the Veridion engine and recorded for this read-only demonstration."
+}

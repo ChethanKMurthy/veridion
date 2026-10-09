@@ -1,0 +1,109 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api:
+    name: API · lint, tests, migrations
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: apps/api
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: veridion
+          POSTGRES_PASSWORD: veridion
+          POSTGRES_DB: veridion
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U veridion -d veridion"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      LLM_PROVIDER: none
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install Tesseract (OCR tests)
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends tesseract-ocr
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          cache-dependency-glob: apps/api/uv.lock
+      - run: uv sync --locked --extra postgres
+      - run: uv run ruff check src tests migrations
+      - run: uv run pytest
+      - name: Migrations apply cleanly and match the models (PostgreSQL)
+        env:
+          DATABASE_URL: postgresql+psycopg://veridion:veridion@localhost:5432/veridion
+        run: |
+          uv run veridion db upgrade
+          uv run veridion db check
+      - name: End-to-end smoke test on PostgreSQL (process documents, run assessments)
+        env:
+          DATABASE_URL: postgresql+psycopg://veridion:veridion@localhost:5432/veridion
+        run: uv run veridion seed demo --mode rules
+
+  web:
+    name: Web · lint, types, build
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+
+  stack:
+    name: Container stack · build and smoke test
+    runs-on: ubuntu-24.04
+    needs: [api, web]
+    env:
+      # Throwaway values for an ephemeral CI stack.
+      SECRET_KEY: ci-only-secret-not-used-anywhere-else
+      POSTGRES_PASSWORD: ci-only-password
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build and start postgres, migrate, api, worker and web
+        run: docker compose up --build --detach
+      - name: Wait for the web app and the proxied API
+        run: |
+          for i in $(seq 1 60); do
+            if curl --fail --silent http://localhost:3000/api/v1/ready > /dev/null; then break; fi
+            sleep 5
+          done
+          curl --fail --silent --show-error http://localhost:3000/api/v1/ready
+          curl --fail --silent --show-error --output /dev/null http://localhost:3000/
+          curl --fail --silent --show-error --output /dev/null http://localhost:3000/demo
+      - name: Seed the sample workspace through the running stack
+        run: docker compose run --rm api veridion seed demo --mode rules
+      - name: Sign in through the web origin
+        run: |
+          curl --fail --silent --show-error -c cookies.txt -H 'Content-Type: application/json' -H 'X-Veridion-Client: web' \
+            -d '{"email":"demo@veridion.example","password":"veridion-demo"}' http://localhost:3000/api/v1/auth/login > /dev/null
+          curl --fail --silent --show-error -b cookies.txt http://localhost:3000/api/v1/dashboard > /dev/null
+      - name: Service logs
+        if: failure()
+        run: docker compose logs --no-color
+      - name: Stop the stack
+        if: always()
+        run: docker compose down --volumes

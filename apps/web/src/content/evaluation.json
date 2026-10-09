@@ -1,0 +1,111 @@
+{
+ "comparison": {
+  "generated_at": "2026-10-09T12:25:03.498991+00:00",
+  "set_id": "gri-302-305-2016@1.1.0",
+  "cases": 45,
+  "corpus_cases": 27,
+  "synthetic_cases": 18,
+  "sampled": true,
+  "modes": {
+   "rules": {
+    "status_accuracy": 0.9333333333333333,
+    "gap_precision": 0.9411764705882353,
+    "gap_recall": 1.0,
+    "element_precision": 1.0,
+    "element_recall": 0.8876404494382022,
+    "conflict_precision": 1.0,
+    "conflict_recall": 1.0,
+    "recall_at_5": 1.0,
+    "support_precision": 0.7505847953216375,
+    "numeric_accuracy": 1.0,
+    "citation_validity": 1.0,
+    "review_rate": 0.08888888888888889,
+    "latency_ms": 0.2,
+    "tokens": 0,
+    "errors": 0
+   },
+   "hybrid": {
+    "status_accuracy": 0.9333333333333333,
+    "gap_precision": 0.9696969696969697,
+    "gap_recall": 1.0,
+    "element_precision": 0.9885057471264368,
+    "element_recall": 0.9662921348314607,
+    "conflict_precision": 1.0,
+    "conflict_recall": 1.0,
+    "recall_at_5": 1.0,
+    "support_precision": 0.7654970760233918,
+    "numeric_accuracy": 1.0,
+    "citation_validity": 1.0,
+    "review_rate": 0.13333333333333333,
+    "latency_ms": 2611.1,
+    "tokens": 2180.911111111111,
+    "errors": 0
+   }
+  }
+ },
+ "baseline_full": {
+  "generated_at": "2026-10-09T12:25:03.499314+00:00",
+  "set_id": "gri-302-305-2016@1.1.0",
+  "cases": 139,
+  "corpus_cases": 27,
+  "synthetic_cases": 112,
+  "sampled": false,
+  "modes": {
+   "rules": {
+    "status_accuracy": 0.8992805755395683,
+    "gap_precision": 0.9099099099099099,
+    "gap_recall": 0.9711538461538461,
+    "element_precision": 0.9581497797356828,
+    "element_recall": 0.8950617283950617,
+    "conflict_precision": 1.0,
+    "conflict_recall": 1.0,
+    "recall_at_5": 1.0,
+    "support_precision": 0.7505847953216375,
+    "numeric_accuracy": 0.9651162790697675,
+    "citation_validity": 1.0,
+    "review_rate": 0.05755395683453238,
+    "latency_ms": 0.2,
+    "tokens": 0,
+    "errors": 0
+   }
+  }
+ },
+ "failures": [
+  {
+   "id": "corpus/tessaline/302-4",
+   "gold": "not_found",
+   "predicted": "partially_supported",
+   "mode": "rules"
+  },
+  {
+   "id": "synthetic/305-1/018",
+   "gold": "supported",
+   "predicted": "partially_supported",
+   "mode": "rules"
+  },
+  {
+   "id": "synthetic/305-2/028",
+   "gold": "supported",
+   "predicted": "partially_supported",
+   "mode": "rules"
+  },
+  {
+   "id": "corpus/tessaline/302-4",
+   "gold": "not_found",
+   "predicted": "partially_supported",
+   "mode": "hybrid"
+  },
+  {
+   "id": "corpus/corvane/305-5",
+   "gold": "not_found",
+   "predicted": "partially_supported",
+   "mode": "hybrid"
+  },
+  {
+   "id": "synthetic/305-2/028",
+   "gold": "supported",
+   "predicted": "partially_supported",
+   "mode": "hybrid"
+  }
+ ]
+}

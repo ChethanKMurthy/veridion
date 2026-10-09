@@ -1,0 +1,593 @@
+# Veridion requirement catalogue
+# ------------------------------------------------------------------------------
+# Requirement summaries are Veridion's paraphrases, written to drive evidence
+# assessment. They are NOT the authoritative text of the GRI Standards.
+# Always consult the official standards at https://www.globalreporting.org/standards/
+#
+# Element checks:
+#   metric          an extracted value exists for the assessment period
+#   metric_period   the value's period is stated (not only inferred)
+#   pattern         wording is present (optionally near context terms)
+#   any_of          any nested check is satisfied
+#   conditional     the element applies only when `when` is satisfied
+# ------------------------------------------------------------------------------
+key: gri-302-305-2016
+version: 1.1.0
+title: Climate & Energy — GRI 302 and GRI 305 (2016 editions)
+framework: GRI
+review_status: reviewed
+description: >
+  A focused subset of GRI energy and greenhouse gas disclosures for organizations
+  that have identified climate change and energy as material topics. Designed for
+  disclosure-readiness reviews of mid-sized companies.
+standards:
+  - name: "GRI 302: Energy 2016"
+    url: https://www.globalreporting.org/standards/
+  - name: "GRI 305: Emissions 2016"
+    url: https://www.globalreporting.org/standards/
+  - name: "GRI 2: General Disclosures 2021"
+    url: https://www.globalreporting.org/standards/
+effective_from: 2018-07-01
+effective_to: 2026-12-31
+effective_rule: >
+  Use for reports published before 1 January 2027. GRI 305 disclosures 305-1 to
+  305-5 are withdrawn when GRI 102: Climate Change 2025 takes effect, and GRI 302
+  is replaced by GRI 103: Energy 2025, both on 1 January 2027 (GRI, June 2025).
+succeeded_by: gri-102-103-2025
+notes: >
+  Absence of evidence in the uploaded documents is not evidence of non-compliance.
+  Applicability depends on the organization's material topics (GRI 3-3); reviewers
+  can mark individual requirements as not applicable with a rationale.
+changelog:
+  - version: 1.1.0
+    date: 2026-10-01
+    changes:
+      - "305-1: added element for biogenic CO2 emissions reported separately (305-1-c), previously omitted."
+      - "305-2: added conditional element for the market-based Scope 2 figure (305-2-b). It applies when the documents mention contractual instruments such as guarantees of origin, renewable energy certificates or power purchase agreements."
+  - version: 1.0.0
+    date: 2026-09-15
+    changes:
+      - Initial curated subset covering GRI 302-1, 302-3, 302-4, 305-1 to 305-5 and GRI 2-5.
+
+shared:
+  boundary: &boundary
+    key: boundary
+    label: Consolidation approach (operational control, financial control or equity share)
+    weight: 2
+    check:
+      type: pattern
+      patterns: ['operational[\s-]control', 'financial[\s-]control', 'equity[\s-]share']
+      context: ['emission', 'ghg', 'greenhouse', 'scope', 'carbon', 'consolidat', 'boundar', 'report']
+    action:
+      title: Confirm the consolidation approach used for GHG reporting
+      detail: >
+        Document whether emissions are consolidated using operational control, financial
+        control or equity share, and confirm that the same boundary applies across scopes.
+      effort: low
+  methodology: &methodology
+    key: methodology
+    label: Standards, methodologies or calculation tools used
+    weight: 1
+    check:
+      type: pattern
+      patterns: ['GHG\s+Protocol', 'ISO\s*14064', 'Corporate\s+(?:Accounting\s+and\s+Reporting\s+)?Standard', 'calculat\w+\s+(?:methodolog|tool|approach)', 'methodolog']
+      context: ['emission', 'ghg', 'greenhouse', 'scope', 'carbon']
+    action:
+      title: Reference the calculation methodology
+      detail: Name the standard or methodology used (for example the GHG Protocol Corporate Standard) and any calculation tools.
+      effort: low
+  gases: &gases
+    key: gases
+    label: Greenhouse gases included in the calculation
+    weight: 1
+    check:
+      type: pattern
+      patterns: ['\bCO\s?2\b[^.]{0,40}\bCH\s?4\b', '\bCH\s?4\b[^.]{0,40}\bN\s?2\s?O\b', 'carbon\s+dioxide[^.]{0,80}methane', 'Kyoto\s+(?:Protocol\s+)?gases', 'seven\s+(?:Kyoto\s+)?(?:greenhouse\s+)?gases', 'gases\s+(?:included|covered)', '\bHFCs?\b', '\bSF\s?6\b']
+    action:
+      title: List the greenhouse gases included
+      detail: State which gases (CO2, CH4, N2O, HFCs, PFCs, SF6, NF3) are included in the calculation.
+      effort: low
+  factors: &factors
+    key: factors
+    label: Source of emission factors and global warming potential (GWP) rates
+    weight: 1
+    check:
+      type: pattern
+      patterns: ['emission\s+factors?', '\bGWP\b', 'global\s+warming\s+potential', 'IPCC\s+(?:AR\s?\d|Fifth|Sixth)', '\bDEFRA\b', '\bDESNZ\b', '\bIEA\b', '\bEPA\b']
+    action:
+      title: Disclose emission factor and GWP sources
+      detail: Identify the source of emission factors (e.g. DEFRA/DESNZ, IEA, national inventories) and the GWP values used (e.g. IPCC AR6).
+      effort: low
+
+requirements:
+  - code: "305-1"
+    display_code: GRI 305-1
+    title: Direct (Scope 1) GHG emissions
+    topic: GHG emissions
+    importance: 3
+    summary: >
+      Gross direct (Scope 1) greenhouse gas emissions in metric tonnes of CO2 equivalent,
+      together with the gases included, the base year where applicable, the source of
+      emission factors and GWP rates, the consolidation approach, and the methodologies used.
+    applicability: Applies when climate change / emissions is a material topic (GRI 3-3).
+    source_reference: "GRI 305: Emissions 2016, Disclosure 305-1"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [ghg_scope1]
+    search_terms: ["scope 1", "direct emissions", "direct ghg emissions", "tco2e", "stationary combustion", "process emissions", "fuel combustion", "greenhouse gas"]
+    related_terms: ["emission", "ghg", "greenhouse", "carbon", "co2", "fuel", "combustion", "energy consumption"]
+    elements:
+      - key: value
+        label: Gross Scope 1 emissions value (tCO2e)
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_scope1]}
+        action:
+          title: Obtain the gross Scope 1 emissions figure
+          detail: >
+            Request the gross Scope 1 total in tCO2e for the reporting period, with the underlying
+            activity data (fuel use, process data) and the calculation workbook.
+          effort: high
+      - key: period
+        label: Reporting period stated with the figure
+        weight: 2
+        check: {type: metric_period, metric_keys: [ghg_scope1]}
+        action:
+          title: Confirm the period covered by the Scope 1 figure
+          detail: State the reporting period (start and end dates) alongside the Scope 1 value.
+          effort: low
+          depends_on: [value]
+      - *boundary
+      - *methodology
+      - *gases
+      - *factors
+      - key: base_year
+        label: Base year, where applicable
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['base[\s-]?year', 'baseline\s+year', 'recalculat\w+\s+(?:of\s+)?(?:the\s+)?base']
+          context: ['emission', 'ghg', 'scope', 'carbon', 'co2']
+        action:
+          title: Document the base year and recalculation policy
+          detail: State the base year, the rationale for choosing it, base-year emissions, and the policy for recalculation.
+          effort: medium
+      - key: biogenic
+        label: Biogenic CO2 emissions reported separately
+        weight: 1
+        check:
+          type: any_of
+          checks:
+            - {type: metric, metric_keys: [ghg_biogenic]}
+            - type: pattern
+              patterns: ['biogenic']
+        action:
+          title: Report biogenic CO2 emissions separately
+          detail: >
+            Quantify CO2 from the combustion or biodegradation of biomass (e.g. biomass fuels,
+            alternative fuels) and report it separately from gross Scope 1, or state that none arise.
+          effort: medium
+
+  - code: "305-2"
+    display_code: GRI 305-2
+    title: Energy indirect (Scope 2) GHG emissions
+    topic: GHG emissions
+    importance: 3
+    summary: >
+      Gross location-based energy indirect (Scope 2) GHG emissions in metric tonnes of CO2
+      equivalent, the market-based figure if applicable, gases, base year, emission factor
+      sources, consolidation approach and methodologies.
+    applicability: Applies when climate change / emissions is a material topic (GRI 3-3).
+    source_reference: "GRI 305: Emissions 2016, Disclosure 305-2"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [ghg_scope2_location, ghg_scope2_market, ghg_scope2]
+    search_terms: ["scope 2", "indirect emissions", "location-based", "market-based", "purchased electricity", "tco2e", "grid emission factor"]
+    related_terms: ["emission", "electricity", "ghg", "greenhouse", "carbon", "energy"]
+    elements:
+      - key: location_value
+        label: Gross location-based Scope 2 emissions value (tCO2e)
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_scope2_location], weak_metric_keys: [ghg_scope2]}
+        action:
+          title: Obtain the location-based Scope 2 emissions figure
+          detail: >
+            Request purchased electricity, heat and steam consumption by site and the grid
+            emission factors applied, and calculate the location-based Scope 2 total.
+          effort: high
+      - key: period
+        label: Reporting period stated with the figure
+        weight: 2
+        check: {type: metric_period, metric_keys: [ghg_scope2_location, ghg_scope2]}
+        action:
+          title: Confirm the period covered by the Scope 2 figure
+          detail: State the reporting period alongside the Scope 2 value.
+          effort: low
+          depends_on: [location_value]
+      - <<: *boundary
+        weight: 1
+      - *methodology
+      - key: factors
+        label: Source of grid emission factors
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['grid\s+(?:emission\s+)?factors?', 'emission\s+factors?', 'residual\s+mix', '\bIEA\b', '\beGRID\b', '\bDEFRA\b', '\bDESNZ\b']
+        action:
+          title: Disclose the source of grid emission factors
+          detail: Identify the grid emission factors used (and residual-mix factors for market-based figures).
+          effort: low
+      - key: market_value
+        label: Market-based Scope 2 figure (applies where contractual instruments are used)
+        weight: 2
+        check:
+          type: conditional
+          when:
+            type: pattern
+            patterns: ['guarantees?\s+of\s+origin', 'renewable\s+energy\s+certificates?', '\bI-?RECs?\b', '\bPPAs?\b', 'power\s+purchase\s+agreements?', 'green\s+(?:electricity\s+)?tariff', 'contractual\s+instruments?']
+          then: {type: metric, metric_keys: [ghg_scope2_market]}
+        action:
+          title: Calculate the market-based Scope 2 figure
+          detail: >
+            The documents refer to contractual instruments for electricity. Calculate Scope 2
+            using the market-based method (supplier-specific or residual-mix factors) and
+            report it alongside the location-based figure.
+          effort: medium
+          depends_on: [location_value]
+
+  - code: "305-3"
+    display_code: GRI 305-3
+    title: Other indirect (Scope 3) GHG emissions
+    topic: GHG emissions
+    importance: 2
+    summary: >
+      Gross other indirect (Scope 3) GHG emissions in metric tonnes of CO2 equivalent, the
+      Scope 3 categories and activities included, and the methodologies used.
+    applicability: Applies when value-chain emissions are relevant to the organization's climate impacts.
+    source_reference: "GRI 305: Emissions 2016, Disclosure 305-3"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [ghg_scope3]
+    search_terms: ["scope 3", "other indirect emissions", "value chain emissions", "purchased goods and services", "upstream transportation", "category 1", "supply chain emissions"]
+    related_terms: ["scope 3", "value chain", "supply chain", "supplier", "upstream", "downstream"]
+    elements:
+      - key: value
+        label: Gross Scope 3 emissions value (tCO2e)
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_scope3]}
+        action:
+          title: Quantify Scope 3 emissions for material categories
+          detail: >
+            Complete a Scope 3 screening, quantify the material categories (typically purchased
+            goods and services, upstream transport, use and end-of-life of sold products), and
+            report the gross total in tCO2e.
+          effort: high
+      - key: categories
+        label: Scope 3 categories and activities included
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['categor(?:y|ies)\s*\d', 'purchased\s+goods', 'upstream\s+transport', 'business\s+travel', 'employee\s+commut', 'use\s+of\s+sold\s+products', 'end[\s-]of[\s-]life', 'capital\s+goods', 'fuel[\s-]\s*and\s+energy[\s-]related']
+          context: ['scope\s*3', 'value\s+chain', 'indirect']
+        action:
+          title: Identify the Scope 3 categories included
+          detail: List which of the 15 GHG Protocol Scope 3 categories are included and justify exclusions.
+          effort: medium
+      - key: period
+        label: Reporting period stated with the figure
+        weight: 1
+        check: {type: metric_period, metric_keys: [ghg_scope3]}
+        action:
+          title: Confirm the period covered by the Scope 3 figure
+          detail: State the reporting period alongside the Scope 3 value.
+          effort: low
+          depends_on: [value]
+      - <<: *methodology
+        check:
+          type: pattern
+          patterns: ['GHG\s+Protocol', 'Scope\s*3\s+Standard', 'spend[\s-]based', 'activity[\s-]based', 'methodolog']
+          context: ['scope\s*3', 'value\s+chain']
+
+  - code: "305-4"
+    display_code: GRI 305-4
+    title: GHG emissions intensity
+    topic: GHG emissions
+    importance: 2
+    summary: >
+      The GHG emissions intensity ratio, the organization-specific denominator chosen, the
+      scopes included in the ratio, and the gases included.
+    applicability: Applies when climate change / emissions is a material topic (GRI 3-3).
+    source_reference: "GRI 305: Emissions 2016, Disclosure 305-4"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [ghg_intensity]
+    search_terms: ["emissions intensity", "intensity ratio", "tco2e per tonne", "per unit of production", "carbon intensity"]
+    related_terms: ["intensity", "per tonne", "per unit", "emission"]
+    elements:
+      - key: ratio
+        label: GHG emissions intensity ratio
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_intensity]}
+        action:
+          title: Calculate and disclose a GHG intensity ratio
+          detail: Divide absolute emissions by an organization-specific metric (e.g. tonnes of product) and report the ratio.
+          effort: medium
+      - key: denominator
+        label: Organization-specific denominator
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['(?:tCO2e?|CO2e?|emissions?)[^.]{0,40}(?:\bper\b|/)\s*(?:tonne|unit|million|€|\$|£|₹|employee|m2|square)', 'intensity\s+(?:ratio|metric)[^.]{0,60}(?:per|denominator)']
+        action:
+          title: State the intensity denominator
+          detail: Name the organization-specific metric used as the denominator.
+          effort: low
+      - key: scopes
+        label: Scopes included in the ratio
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['intensity[^.]{0,100}scope\s*[123]', 'scope\s*[123][^.]{0,100}intensity']
+        action:
+          title: Specify which scopes the intensity covers
+          detail: State whether the ratio includes Scope 1, Scope 2 and/or Scope 3 emissions.
+          effort: low
+
+  - code: "305-5"
+    display_code: GRI 305-5
+    title: Reduction of GHG emissions
+    topic: GHG emissions
+    importance: 2
+    summary: >
+      GHG emissions reduced as a direct result of reduction initiatives, in metric tonnes of
+      CO2 equivalent, with the base year or baseline, the scopes in which reductions occurred,
+      and the methodologies used.
+    applicability: Applies when the organization reports emissions-reduction initiatives.
+    source_reference: "GRI 305: Emissions 2016, Disclosure 305-5"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [ghg_reduction]
+    search_terms: ["emissions reduction", "reduced emissions", "reduction initiatives", "avoided emissions", "decarbonisation", "decarbonization", "abatement"]
+    related_terms: ["reduc", "decarboni", "target", "net zero", "abate"]
+    elements:
+      - key: value
+        label: Emissions reduced through initiatives (tCO2e)
+        weight: 3
+        check: {type: metric, metric_keys: [ghg_reduction]}
+        action:
+          title: Quantify reductions achieved by initiatives
+          detail: Calculate emissions reduced as a direct result of each initiative (tCO2e), separately from changes in output.
+          effort: medium
+      - key: baseline
+        label: Base year or baseline for the reductions
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['base(?:line)?[\s-]?year', 'baseline', '(?:compared\s+(?:with|to)|relative\s+to|against)\s+(?:a\s+|the\s+)?(?:19|20)\d\d']
+          context: ['reduc', 'emission', 'decarboni', 'target']
+        action:
+          title: Document the baseline for reductions
+          detail: State the base year or baseline used and the rationale for choosing it.
+          effort: low
+      - key: scopes
+        label: Scopes in which reductions took place
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['(?:reduc|sav|abat)\w*[^.]{0,100}scope\s*[123]', 'scope\s*[123][^.]{0,100}(?:reduc|sav|abat)']
+        action:
+          title: Identify the scopes affected by reductions
+          detail: State whether reductions occurred in Scope 1, Scope 2 and/or Scope 3.
+          effort: low
+      - key: initiatives
+        label: Description of reduction initiatives
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['(?:initiative|project|programme|program|measure)s?[^.]{0,100}(?:reduc|efficien|switch|replac|electrif)', '(?:reduc|efficien|switch|replac|electrif)\w*[^.]{0,100}(?:initiative|project|programme|program)s?']
+        action:
+          title: Describe the reduction initiatives
+          detail: Describe the initiatives (e.g. fuel switching, efficiency upgrades) that produced the reductions.
+          effort: low
+
+  - code: "302-1"
+    display_code: GRI 302-1
+    title: Energy consumption within the organization
+    topic: Energy
+    importance: 3
+    summary: >
+      Total energy consumption within the organization, fuel consumption from non-renewable
+      and renewable sources including fuel types, electricity, heating, cooling and steam
+      consumption, the standards and methodologies used, and the source of conversion factors.
+    applicability: Applies when energy is a material topic (GRI 3-3).
+    source_reference: "GRI 302: Energy 2016, Disclosure 302-1"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [energy_total, energy_fuel, energy_electricity]
+    search_terms: ["energy consumption", "total energy", "fuel consumption", "electricity consumption", "mwh", "gj", "natural gas", "renewable energy"]
+    related_terms: ["energy", "electricity", "fuel", "consumption", "mwh", "gj"]
+    elements:
+      - key: total
+        label: Total energy consumption within the organization
+        weight: 3
+        check: {type: metric, metric_keys: [energy_total]}
+        action:
+          title: Obtain total energy consumption
+          detail: Compile fuel, electricity, heating, cooling and steam consumption by site and report the total in joules or watt-hours.
+          effort: medium
+      - key: fuel
+        label: Fuel consumption by source, including fuel types
+        weight: 2
+        check:
+          type: any_of
+          checks:
+            - {type: metric, metric_keys: [energy_fuel]}
+            - type: pattern
+              patterns: ['fuel\s+(?:consumption|types?|mix)', 'natural\s+gas', '\bdiesel\b', '\bpetcoke\b', '\bcoal\b', 'biomass', 'fuel\s+oil']
+              context: ['consum', 'energy', 'fuel']
+        action:
+          title: Break down fuel consumption by source
+          detail: Report fuel consumption from non-renewable and renewable sources and list the fuel types used.
+          effort: medium
+      - key: electricity
+        label: Electricity consumption
+        weight: 1
+        check:
+          type: any_of
+          checks:
+            - {type: metric, metric_keys: [energy_electricity]}
+            - type: pattern
+              patterns: ['electricity\s+(?:consumption|consumed|purchased|use)', 'purchased\s+electricity']
+        action:
+          title: Report electricity consumption
+          detail: Report electricity consumption (and heating, cooling and steam where relevant).
+          effort: low
+      - key: period
+        label: Reporting period stated with the figure
+        weight: 1
+        check: {type: metric_period, metric_keys: [energy_total]}
+        action:
+          title: Confirm the period covered by the energy figure
+          detail: State the reporting period alongside the total energy figure.
+          effort: low
+          depends_on: [total]
+      - key: conversion_factors
+        label: Source of conversion factors
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['conversion\s+factors?', 'calorific\s+values?', '(?:net|gross)\s+calorific', 'heating\s+values?']
+        action:
+          title: Disclose energy conversion factors
+          detail: Identify the source of the conversion factors (e.g. calorific values) used to express fuel use as energy.
+          effort: low
+
+  - code: "302-3"
+    display_code: GRI 302-3
+    title: Energy intensity
+    topic: Energy
+    importance: 1
+    summary: >
+      The energy intensity ratio, the organization-specific denominator, the types of energy
+      included, and whether the ratio uses energy consumed within the organization, outside
+      it, or both.
+    applicability: Applies when energy is a material topic (GRI 3-3).
+    source_reference: "GRI 302: Energy 2016, Disclosure 302-3"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [energy_intensity]
+    search_terms: ["energy intensity", "mwh per tonne", "gj per tonne", "intensity ratio", "energy per unit"]
+    related_terms: ["intensity", "per tonne", "per unit", "energy"]
+    elements:
+      - key: ratio
+        label: Energy intensity ratio
+        weight: 3
+        check: {type: metric, metric_keys: [energy_intensity]}
+        action:
+          title: Calculate and disclose an energy intensity ratio
+          detail: Divide energy consumption by an organization-specific metric (e.g. tonnes of product).
+          effort: low
+      - key: denominator
+        label: Organization-specific denominator
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['(?:MWh|GJ|kWh|energy)[^.]{0,40}(?:\bper\b|/)\s*(?:tonne|unit|million|€|\$|£|₹|employee|m2)']
+        action:
+          title: State the energy intensity denominator
+          detail: Name the organization-specific metric used as the denominator.
+          effort: low
+      - key: scope
+        label: Energy types and organizational scope included
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['(?:within|outside)\s+(?:the\s+)?organi[sz]ation', 'intensity[^.]{0,80}(?:fuel|electricity|heat|steam)']
+        action:
+          title: Clarify what the energy intensity covers
+          detail: State the energy types included and whether consumption outside the organization is included.
+          effort: low
+
+  - code: "302-4"
+    display_code: GRI 302-4
+    title: Reduction of energy consumption
+    topic: Energy
+    importance: 1
+    summary: >
+      Reductions in energy consumption achieved as a direct result of conservation and
+      efficiency initiatives, the types of energy included, the baseline, and the methodologies used.
+    applicability: Applies when the organization reports energy conservation initiatives.
+    source_reference: "GRI 302: Energy 2016, Disclosure 302-4"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: [energy_reduction]
+    search_terms: ["energy savings", "energy efficiency", "reduced energy consumption", "conservation initiatives", "efficiency projects"]
+    related_terms: ["efficien", "saving", "reduc", "conservation"]
+    elements:
+      - key: value
+        label: Energy reductions achieved through initiatives
+        weight: 3
+        check: {type: metric, metric_keys: [energy_reduction]}
+        action:
+          title: Quantify energy savings from initiatives
+          detail: Quantify reductions achieved as a direct result of conservation and efficiency initiatives (MWh or GJ).
+          effort: medium
+      - key: baseline
+        label: Base year or baseline for the reductions
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['base(?:line)?[\s-]?year', 'baseline', '(?:compared\s+(?:with|to)|relative\s+to|against)\s+(?:a\s+|the\s+)?(?:19|20)\d\d']
+          context: ['energy', 'efficien', 'saving', 'reduc']
+        action:
+          title: Document the baseline for energy savings
+          detail: State the base year or baseline used to calculate reductions.
+          effort: low
+      - key: energy_types
+        label: Types of energy included in the reductions
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['(?:fuel|electricity|heating|cooling|steam|gas)[^.]{0,80}(?:reduc|sav)', '(?:reduc|sav)\w*[^.]{0,80}(?:fuel|electricity|heating|cooling|steam|gas)']
+        action:
+          title: Specify the energy types reduced
+          detail: State whether savings relate to fuel, electricity, heating, cooling or steam.
+          effort: low
+
+  - code: "2-5"
+    display_code: GRI 2-5
+    title: External assurance
+    topic: Assurance
+    importance: 2
+    summary: >
+      The organization's policy and practice for seeking external assurance and, where the
+      sustainability information has been assured, the assurance provider, the level and scope
+      of assurance, and the standards used.
+    applicability: "Universal disclosure under GRI 2: General Disclosures 2021."
+    source_reference: "GRI 2: General Disclosures 2021, Disclosure 2-5"
+    source_url: https://www.globalreporting.org/standards/
+    metric_keys: []
+    search_terms: ["assurance", "limited assurance", "reasonable assurance", "independent assurance", "assurance statement", "isae 3000", "verified"]
+    related_terms: ["assur", "verif", "audit"]
+    elements:
+      - key: statement
+        label: Statement of the external assurance position (assured, or explicitly not assured)
+        weight: 2
+        check:
+          type: pattern
+          patterns: ['(?:limited|reasonable)\s+assurance', 'independent(?:ly)?\s+assur', 'assurance\s+(?:statement|provider|report|engagement)', 'ISAE\s*3000', 'ISAE\s*3410', 'AA1000', 'not\s+(?:been\s+)?(?:externally\s+)?assured']
+        action:
+          title: State the external assurance position
+          detail: Disclose whether the climate and energy data has been externally assured and, if not, the policy on assurance.
+          effort: low
+      - key: scope
+        label: Level and scope of assurance
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['assur\w*[^.]{0,120}(?:scope\s*[123]|emissions|energy|ghg)', '(?:scope\s*[123]|emissions|energy|ghg)[^.]{0,120}assur']
+        action:
+          title: Describe the scope of assurance
+          detail: Identify which indicators were assured and at what level (limited or reasonable).
+          effort: low
+      - key: standard
+        label: Assurance standard applied
+        weight: 1
+        check:
+          type: pattern
+          patterns: ['ISAE\s*3000', 'ISAE\s*3410', 'AA1000', 'ISO\s*14064-3']
+        action:
+          title: Name the assurance standard
+          detail: Identify the assurance standard applied (e.g. ISAE 3000 / ISAE 3410).
+          effort: low
