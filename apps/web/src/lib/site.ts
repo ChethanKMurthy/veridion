@@ -11,7 +11,12 @@ export type CorporateStatus = "in_development" | "incorporated";
 export const site = {
   name: "Veridion",
   tagline: "Company intelligence, grounded in evidence.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  // Set NEXT_PUBLIC_SITE_URL for a custom domain; on Vercel the production domain is used otherwise.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
+      : "http://localhost:3000"),
   year: 2026,
 
   corporate: {
